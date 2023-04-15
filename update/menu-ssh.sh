@@ -2,6 +2,36 @@
 dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
 biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
 ###########- COLOR CODE -##############
+VALIDITY() {
+    today=$(date -d "0 days" +"%Y-%m-%d")
+    Exp1=$(curl https://raw.githubusercontent.com/Zeadxt/reg/main/ip | grep $MYIP | awk '{print $4}')
+    if [[ $today < $Exp1 ]]; then
+        echo -e "\e[32mAUTOSCRIPT SUKSES..\e[0m"
+        sleep 5
+    else
+    echo -e "\e[31mScript Anda Telah Expired !!\e[0m";
+    echo -e "\e[31mTolong Renew ke Owner Script \e[0m"
+    exit 0
+    fi
+}
+IZIN=$(curl https://raw.githubusercontent.com/Zeadxt/reg/main/ip | awk '{print $5}' | grep $MYIP)
+if [ $MYIP = $IZIN ]; then
+echo -e "\e[32mPERMISSION ACCEPT...\e[0m"
+    VALIDITY
+else
+    echo -e "\e[31mPermohonan Ditolak!\e[0m"
+    echo -e "${YELLOW}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo -e "                PERMISSION DENIED ! "
+    echo -e "     Your VPS ${NC}( ${green}$IP${NC} ) ${YELLOW}Has been Banned "
+    echo -e "         Buy access permissions for scripts "
+    echo -e "                 Contact Admin :"
+    echo -e "             ${green}Telegram t.me/@freetunnelproject "
+    echo -e "${YELLOW}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+    echo ""
+    rm -f setup.sh
+    exit 0
+fi
+clear
 colornow=$(cat /etc/ssnvpn/theme/color.conf)
 NC="\e[0m"
 RED="\033[0;31m" 
