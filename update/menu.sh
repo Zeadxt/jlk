@@ -1,36 +1,5 @@
 #!/bin/bash
 # =========================================
-#!/bin/bash
-# Valid Script
-VALIDITY() {
-    today=$(date -d "0 days" +"%Y-%m-%d")
-    Exp1=$(curl https://raw.githubusercontent.com/Zeadxt/kzl/main/ip | grep $MYIP | awk '{print $4}')
-    if [[ $today < $Exp1 ]]; then
-        echo -e "\e[32mAUTOSCRIPT SUKSES..\e[0m"
-        sleep 5
-    else
-    echo -e "\e[31mScript Anda Telah Expired !!\e[0m";
-    echo -e "\e[31mTolong Renew ke Owner Script \e[0m"
-    exit 0
-    fi
-}
-IZIN=$(curl https://raw.githubusercontent.com/Zeadxt/kzl/main/ip | awk '{print $5}' | grep $MYIP)
-if [ $MYIP = $IZIN ]; then
-echo -e "\e[32mPERMISSION ACCEPT...\e[0m"
-    VALIDITY
-else
-    echo -e "\e[31mPermohonan Ditolak!\e[0m"
-    echo -e "${YELLOW}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-    echo -e "                PERMISSION DENIED ! "
-    echo -e "     Your VPS ${NC}( ${green}$IP${NC} ) ${YELLOW}Has been Banned "
-    echo -e "         Buy access permissions for scripts "
-    echo -e "                 Contact Admin :"
-    echo -e "             ${green}Telegram t.me/@freetunnelproject "
-    echo -e "${YELLOW}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-    echo ""
-    rm -f setup.sh
-    exit 0
-fi
 clear
 echo -e "\e[32mloading...\e[0m"
 clear
@@ -54,6 +23,11 @@ trx=$(grep -c -E "^#! " "/etc/xray/config.json")
 let tra=$trx/2
 ssx=$(grep -c -E "^## " "/etc/xray/config.json")
 let ssa=$ssx/2
+IPVPS=$(curl -s icanhazip.com/ip )
+ISPVPS=$( curl -s ipinfo.io/org )
+ttoday="$(vnstat | grep today | awk '{print $8" "substr ($9, 1, 3)}' | head -1)"
+bmon="$(vnstat -m | grep `date +%G-%m` | awk '{print $8" "substr ($9, 1 ,3)}' | head -1)"
+
 
 # // Exporting Language to UTF-8
 export LC_ALL='en_US.UTF-8'
@@ -157,14 +131,14 @@ clear
 echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
 echo -e "\E[44;1;39m                    ⇱ SERVER INFORMATION ⇲                       \E[0m"
 echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
-echo -e "  ${BLUE}• ${GREEN}Sever Uptime        ${NC}= $( uptime -p  | cut -d " " -f 2-10000 ) "
+echo -e "${BICyan} ⇲  ${BICyan}Sever Uptime    :  ${Yellow}$( uptime -p  | cut -d " " -f 2-10000 )${NC} "
 echo -e "${BICyan} ⇲  ${BICyan}SCRIPT BY       :  ${Yellow}FREE TUNNELING PROJECT${NC}"    
 echo -e "${BICyan} ⇲  ${BICyan}Current Domain  :  ${Yellow}$(cat /etc/xray/domain)${NC}" 
 echo -e "${BICyan} ⇲  ${BICyan}IP-VPS          :  ${Yellow}$IPVPS${NC}"                  
 echo -e "${BICyan} ⇲  ${BICyan}ISP-VPS         :  $Yellow}$ISPVPS${NC}"  
 echo -e "${BICyan} ⇲  ${BICyan}DATE&TIME       :  ${Yellow}$( date -d "0 days" +"%d-%m-%Y | %X" ) ${NC}"
 #echo -e "${BICyan} ⇲  ${BICyan}Clients Name        ${NC}= ${YELLOW}$Name ${NC}"
-echo -e "${BICyan} ⇲  ${BICyan}Script Expert       ${NC}= ${YELLOW}$Exp1 ${NC}"
+echo -e "${BICyan} ⇲  ${BICyan}Script Exp      : ${YELLOW}Lifetime ${NC}"
 echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
 echo -e "\E[44;1;39m                      ⇱ STATUS SERVICE ⇲                         \E[0m"
 echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
@@ -173,16 +147,17 @@ echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━�
 echo -e "$COLOR1│  \033[0m ${BOLD}${YELLOW}SSH     VMESS       VLESS      TROJAN       SHADOWSOCKS$NC  $COLOR1│"
 echo -e "$COLOR1│  \033[0m ${Blue} $ssh1        $vma           $vla          $tra               $ssa   $NC    $COLOR1│"
 echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
+echo -e "    ${RED}[ TODAY : $ttoday ]                ${RED}[ MONTH : $bmon ] "
 echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
 echo -e "\E[44;1;39m                     ⇱ MENU SERVICE ⇲                         \E[0m"
 echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
-echo -e " ${CYAN}[01]${NC} • [SSH MENU${NC}] ${CYAN}[08]${NC} • [BACKUP${NC}] "
-echo -e " ${CYAN}[02]${NC} • [VMESS${NC}]    ${CYAN}[09]${NC} • [SETTING${NC}]  "
-echo -e " ${CYAN}[03]${NC} • [VLESS${NC}]    ${CYAN}[10]${NC} • [INFORMATION${NC}]     "
-echo -e " ${CYAN}[04]${NC} • [TROJAN${NC}]   ${CYAN}[11]${NC} • [ADD HOST/DOMAIN${NC}]    "
-echo -e " ${CYAN}[05]${NC} • [SSWS${NC}]     ${CYAN}[12]${NC} • [CERT XRAY${NC}]    "
-echo -e " ${CYAN}[06]${NC} • [SET-DNS${NC}]  ${CYAN}[13]${NC} • [AUTO REBOOT${NC}]     "
-echo -e " ${CYAN}[07]${NC} • [THEME${NC}]    ${CYAN}[14]${NC} • [MENU BOT${NC}] "
+echo -e " ${CYAN}[01]${NC} • SSH MENU${NC}           ${CYAN}[08]${NC} • BACKUP${NC} "
+echo -e " ${CYAN}[02]${NC} • VMESS MENU${NC}         ${CYAN}[09]${NC} • SETTING${NC}  "
+echo -e " ${CYAN}[03]${NC} • VLESS MENU${NC}         ${CYAN}[10]${NC} • INFORMATION${NC}     "
+echo -e " ${CYAN}[04]${NC} • TROJAN MENU${NC}        ${CYAN}[11]${NC} • ADD HOST/DOMAIN${NC}    "
+echo -e " ${CYAN}[05]${NC} • SSWS MENU${NC}          ${CYAN}[12]${NC} • CERT XRAY${NC}    "
+echo -e " ${CYAN}[06]${NC} • SET-DNS MENU${NC}       ${CYAN}[13]${NC} • AUTO REBOOT${NC}     "
+echo -e " ${CYAN}[07]${NC} • THEME MENU${NC}         ${CYAN}[14]${NC} • MENU BOT${NC} "
 echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
 echo -e "\E[44;1;39m                ⇱ DTA X ZEAKING PROJECT ⇲                     \E[0m"
 echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
