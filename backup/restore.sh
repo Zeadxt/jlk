@@ -84,7 +84,7 @@ echo -e "$COLOR1┌────────────────────�
 red "│  [INFO] Data not found / you never backup"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
-echo -e "$COLOR1│${NC}              • JurigVPN •                $COLOR1│$NC"
+echo -e "$COLOR1│${NC}              • FREE TUNNEL •                $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo ""
 read -n 1 -s -r -p "   Press any key to back on menu"
