@@ -22,7 +22,7 @@ BURIQ () {
     done
     rm -f  /root/tmp
 }
-# https://raw.githubusercontent.com/JurigVPN/izinvps/ipuk/ip 
+# https://raw.githubusercontent.com/Zeadxt/kzl/main/ip 
 MYIP=$(curl -sS ipv4.icanhazip.com)
 Name=$(curl -sS ${izin} | grep $MYIP | awk '{print $2}')
 echo $Name > /usr/local/etc/.$Name.ini
@@ -115,7 +115,7 @@ if [ "" = "$PKG_OK" ]; then
   echo -e "[ ${tyblue}NOTES${NC} ] After rebooting"
   sleep 1
   echo -e "[ ${tyblue}NOTES${NC} ] Then run this script again"
-  echo -e "[ ${tyblue}NOTES${NC} ] Notes, Script Mod By JurigVPN"
+  echo -e "[ ${tyblue}NOTES${NC} ] Notes, Script Mod By FREE TUNNELING PROJECT"
   echo -e "[ ${tyblue}NOTES${NC} ] Klik Enter untuk Melanjutkan..."
   read
 else
