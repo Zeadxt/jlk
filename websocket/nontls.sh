@@ -17,7 +17,7 @@ red='\e[1;31m'
 green='\e[0;32m'
 yell='\e[1;33m'
 NC='\e[0m'
-echo "Installing SSH Websocket None TLS by JurigVPN " | lolcat
+echo "Installing SSH Websocket None TLS by FREE TUNNELING PROJECT " | lolcat
 echo "Progress..." | lolcat
 sleep 3
 
