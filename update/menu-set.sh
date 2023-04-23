@@ -234,7 +234,7 @@ echo -e "$COLOR1│${NC}                 • FREE TUNNEL •                 $CO
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo ""
 read -n 1 -s -r -p "  Press any key to back on menu"
-menu-set
+#menu-set
 }
 
 [[ -f /etc/ontorrent ]] && sts="\033[0;32mON \033[0m" || sts="\033[1;31mOFF\033[0m"
@@ -257,7 +257,7 @@ sudo iptables-restore -t < /etc/iptables.up.rules
 sudo netfilter-persistent save >/dev/null 2>&1  
 sudo netfilter-persistent reload >/dev/null 2>&1 
 touch /etc/ontorrent
-#menu-set
+menu-set
 } || {
 sudo iptables -D FORWARD -m string --string "get_peers" --algo bm -j DROP
 sudo iptables -D FORWARD -m string --string "announce_peer" --algo bm -j DROP
